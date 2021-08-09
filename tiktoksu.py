@@ -10,7 +10,7 @@ class ReadTiktok:
         self.tiktok = TikTokApi()
 
     def read_users_from_server(self):
-        response = requests.get('http://192.168.3.66:8001/api/rest/getusers')
+        response = requests.get('https://tiktok.sakura.tv/api/rest/getusers')
 
         print(response.status_code)
         if response.status_code == 200:
@@ -22,29 +22,30 @@ class ReadTiktok:
                     if userInfo['serverCode'] == 200:
                         avatar = userInfo['userInfo']['user']['avatarThumb']
                         nickname = userInfo['userInfo']['user']['nickname']
-                        tiktok_id = userInfo['userInfo']['user']['id']
                         follercount = userInfo['userInfo']['stats']['followerCount']
                         followingcount = userInfo['userInfo']['stats']['followingCount']
                         diggcount = userInfo['userInfo']['stats']['diggCount']
                         heart = userInfo['userInfo']['stats']['heart']
                         videocount = userInfo['userInfo']['stats']['videoCount']
+                        signature = userInfo['userInfo']['user']['signature']
+                        user_id = user['id']
 
-                        url = "http://192.168.3.66:8001/api/rest/saveuser"
+                        url = "https://tiktok.sakura.tv/api/rest/saveuser"
 
-                        "?id={0}&avatar={1}&tiktok_id={2}&uniqueId={3}&nickname={4}&follercount={5}&followingcount={6}&diggcount={7}&heart={8}&videocount={9}"
-                        url = url.format(user['id'], avatar, tiktok_id, user['uniqueId'], nickname,
-                                         follercount, followingcount, diggcount, heart, videocount)
+                        # "?id={0}&avatar={1}&uniqueId={2}&nickname={3}&follercount={4}&followingcount={5}&diggcount={6}&heart={7}&videocount={8}&signature={9}"
+                        # url = url.format(user['id'], avatar, user['uniqueId'], nickname,
+                        #                  follercount, followingcount, diggcount, heart, videocount, signature)
                         payload = {
                             'id': user['id'],
                             'avatar': avatar,
-                            'tiktok_id': tiktok_id,
                             'uniqueId': user['uniqueId'],
                             'nickname': nickname,
                             'follercount': follercount,
                             'followingcount': followingcount,
                             'diggcount': diggcount,
                             'heart': heart,
-                            'videocount': videocount
+                            'videocount': videocount,
+                            'signature': signature
                         }
                         headers = {}
 
