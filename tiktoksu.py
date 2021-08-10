@@ -10,7 +10,7 @@ class ReadTiktok:
         self.tiktok = TikTokApi()
 
     def read_users_from_server(self):
-        response = requests.get('https://tiktok.sakura.tv/api/rest/getusers')
+        response = requests.get('http://192.168.3.66:8001/api/rest/getusers')
 
         print(response.status_code)
         if response.status_code == 200:
@@ -30,7 +30,7 @@ class ReadTiktok:
                         signature = userInfo['userInfo']['user']['signature']
                         user_id = user['id']
 
-                        url = "https://tiktok.sakura.tv/api/rest/saveuser"
+                        url = "http://192.168.3.66:8001/api/rest/saveuser"
 
                         # "?id={0}&avatar={1}&uniqueId={2}&nickname={3}&follercount={4}&followingcount={5}&diggcount={6}&heart={7}&videocount={8}&signature={9}"
                         # url = url.format(user['id'], avatar, user['uniqueId'], nickname,
