@@ -8,7 +8,7 @@ class ReadTiktok:
     def __init__(self):
         self.users = []
         self.tiktok = TikTokApi()
-        self.url = 'http://192.168.3.66:8001'
+        self.url = 'https://tiktoktsu.com'
         self.s_v_web_id = 'verify_ks6sfckh_XVVYI5YO_Wpn9_4V8C_BzW7_WhhRG4tja0m3'
 
     def get_trending_data(self):
