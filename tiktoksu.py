@@ -8,7 +8,7 @@ class ReadTiktok:
     def __init__(self):
         self.users = []
         self.tiktok = TikTokApi()
-        self.url = 'https://tiktoktsu.com'
+        self.url = 'https://www.tiktoktsu.com/'
         self.s_v_web_id = 'verify_ks6sfckh_XVVYI5YO_Wpn9_4V8C_BzW7_WhhRG4tja0m3'
 
     def get_trending_data(self):
@@ -39,7 +39,7 @@ class ReadTiktok:
             for user in self.users:
                 try:
                     print('sending request with {0}'.format(user['uniqueId']))
-                    userInfo = self.tiktok.get_user(user['uniqueId'])
+                    userInfo = self.tiktok.get_user(user['uniqueId'], custom_verifyFp=self.s_v_web_id)
                     if userInfo['serverCode'] == 200:
                         avatar = userInfo['userInfo']['user']['avatarThumb']
                         nickname = userInfo['userInfo']['user']['nickname']
