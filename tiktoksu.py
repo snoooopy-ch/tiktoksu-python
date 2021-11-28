@@ -2,6 +2,7 @@ import requests
 from TikTokApi import TikTokApi
 import requests
 import json
+import time
 
 
 class ReadTiktok:
@@ -78,6 +79,7 @@ class ReadTiktok:
                 except Exception as e:
                     print(str(e))
                     pass
+            time.sleep(2)        
 
         else:
             print(response.text())
