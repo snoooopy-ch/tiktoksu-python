@@ -11,7 +11,7 @@ class ReadTiktok:
 
 		# without slash as tail
         self.url = 'https://tiktoktsu.com'
-        self.s_v_web_id = 'verify_ks6sfckh_XVVYI5YO_Wpn9_4V8C_BzW7_WhhRG4tja0m3'
+        self.s_v_web_id = "verify_bece2d7e4e834299470ba7988111b513"
 
     def get_trending_data(self):
         try:
@@ -41,7 +41,7 @@ class ReadTiktok:
             for user in self.users:
                 try:
                     print('sending request with {0}'.format(user['uniqueId']))
-                    userInfo = self.tiktok.get_user(user['uniqueId'], custom_verifyFp=self.s_v_web_id)
+                    userInfo = self.tiktok.get_user(user['uniqueId'], custom_verifyFp="verify_bece2d7e4e834299470ba7988111b513")
                     if userInfo['serverCode'] == 200:
                         avatar = userInfo['userInfo']['user']['avatarThumb']
                         nickname = userInfo['userInfo']['user']['nickname']
@@ -82,8 +82,14 @@ class ReadTiktok:
         else:
             print(response.text())
 
+    def read_users_from_server_test(self):
+        userInfo = self.tiktok.get_user('neoneo', custom_verifyFp="verify_bece2d7e4e834299470ba7988111b513")
+        print(json.dumps(userInfo, indent=4))
 
 if __name__ == '__main__':
     tiktok_app = ReadTiktok()
     tiktok_app.read_users_from_server()
     tiktok_app.get_trending_data()
+
+    # tiktok_app.read_users_from_server_test()
+    
