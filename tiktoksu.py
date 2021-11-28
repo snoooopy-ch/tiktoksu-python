@@ -88,8 +88,8 @@ class ReadTiktok:
 
 if __name__ == '__main__':
     tiktok_app = ReadTiktok()
-    # tiktok_app.read_users_from_server()
-    # tiktok_app.get_trending_data()
+    tiktok_app.read_users_from_server()
+    tiktok_app.get_trending_data()
 
-    tiktok_app.read_users_from_server_test()
+    # tiktok_app.read_users_from_server_test()
     
